@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;height: 100vh;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>HexapodsUI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+    <link rel="stylesheet" href="{% static 'page1final.css' %}">
+</head>
+
+<body style="background: #1a1a1c;margin: 0px;width: 100%;height: 100vh;min-height: 0;">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: rgba(20,20,21,0.68);margin: 0px;width: 100%;height: 9vh;">
+        <div class="container"><a class="navbar-brand d-lg-flex justify-content-lg-start" href="#" style="background: rgba(255,255,255,0);color: var(--bs-white);font-weight: bold;font-family: ABeeZee, sans-serif;">Hexapods</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link disabled" id="about" href="#" style="color: var(--bs-white);font-family: ABeeZee, sans-serif;font-weight: bold;">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row d-xl-flex align-items-center align-content-center align-self-center align-items-xl-center" style="margin: 0px;margin-top: 0;height: 82vh;border-color: rgba(33,37,41,0);font-size: 33px;">
+            <div class="col-md-4" style="width: 15%;color: rgb(26,26,28);">
+                <div></div>
+            </div>
+            <div class="col-md-4 d-xl-flex d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="width: 70%;border-color: rgba(33,37,41,0);height: auto;margin-bottom: 27px;">
+                <section class="newsletter-subscribe" style="padding: 0;background: rgb(26,26,28);"><img class="img-fluid" src="/assets/img/hexapods.png" width="18%" height="18%" style="margin: 0px;margin-left: 40%;">
+                    <h1 style="font-size: 22px;text-align: center;color: #d7d7d7;height: 37px;">Research the researchers!</h1>
+                    <div class="container">
+                        <div class="intro"></div>
+                        <form class="d-flex justify-content-center flex-wrap justify-content-xl-center align-items-xl-center" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3"><input class="form-control" type="email" name="search" placeholder="Topic of research" style="font-family: ABeeZee, sans-serif;"></div>
+                            <div class="mb-3"><button class="btn" type="submit" style="font-family: ABeeZee, sans-serif;color: rgb(255,255,255);background: #2b46a4;">Search</button></div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer class="d-flex d-sm-flex d-md-flex d-lg-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center" style="background: rgba(20,20,21,0.68);height: 9vh;">
+        <h1 style="color: rgb(50,50,50);font-family: ABeeZee, sans-serif;text-align: center;font-size: 18px;">Researchers Discovery Platform&nbsp;</h1>
+    </footer>
+    <div></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

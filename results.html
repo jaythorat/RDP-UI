@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;min-height: 100vh;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>HexapodsUI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body class="align-items-center align-content-center"
+    style="background: #1a1a1c;margin: 0px;width: 100%;min-height: 100vh;border-color: rgba(33,37,41,0);overflow: hidden;">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean"
+        style="background: rgba(20,20,21,0.68);margin: 0px;width: 100%;height: 9vh;transform: perspective(0px) translate(0px) rotate(0deg) scale(1);">
+        <div class="container"><a class="navbar-brand d-lg-flex justify-content-lg-start" href="#"
+                style="background: rgba(255,255,255,0);color: var(--bs-white);font-weight: bold;font-family: ABeeZee, sans-serif;">Hexapods</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" id="home" href="/"
+                            style="color: var(--bs-white);font-family: ABeeZee, sans-serif;font-weight: bold;">Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link disabled" href="#"
+                            style="color: var(--bs-white);font-family: ABeeZee, sans-serif;font-weight: bold;">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="text-center d-flex d-xl-flex flex-column justify-content-center align-content-center align-self-center align-items-xl-center"
+        style="margin: 10px 0px;min-height: 82vh;padding: 0px;filter: blur(0px) brightness(100%);opacity: 1;height: 82vh;overflow: auto;">
+        <button class="btn results" type="button"
+            style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);width: 50%;min-height: 75px;margin-left: 25%;margin-right: 25%;margin-top: 22px;margin-bottom: 10px;font-size: 18px;padding: 1% 5%;text-align: left;">
+            <b>Name</b> : Jay Thorat
+            <br />
+            <b>Affiliation</b> : Asst. Prof. IIT Kanpur
+
+        </button>
+        {% for data in authdata %}
+        <button class="btn results" type="button" id= "{{forloop.counter0}}" onclick="expertid(this.id)"
+            style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);width: 50%;min-height: 75px;margin-left: 25%;margin-right: 25%;margin-top: 22px;margin-bottom: 10px;font-size: 18px;padding: 1% 5%;text-align: left;">
+            <b>Name</b> : {{data.name}}
+            <br />
+            <b>Affiliation</b> : {{data.affiliation}}
+
+        </button>
+        {% endfor %}
+    </div>
+    <footer
+        class="text-center d-md-flex d-lg-flex align-self-baseline justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
+        style="background: rgba(20,20,21,0.68);height: 9vh;">
+        <h1 style="color: rgb(50,50,50);font-family: ABeeZee, sans-serif;text-align: center;font-size: 18px;">
+            Researchers Discovery Platform&nbsp;</h1>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      function expertid(btnid) {
+        var id = btnid;
+       // var x = document.getElementsByClassName("expertid")
+        $.ajax({
+          url : '/results', // the endpoint
+          type : 'POST', // http method
+          data : { 'id':id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}'
+              },
+          success :   window.location = "http://127.0.0.1:8000/profile",
+             // data sent with the post request
+          // handle a successful response
+          //success : function(data) {
+          //},
+  });
+      }
+    </script>
+</body>
+
+</html>

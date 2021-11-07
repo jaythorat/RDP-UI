@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>HexapodsUI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body style="width: 100%;height: 100vh;min-height: 0;margin: 0px;background: #1a1a1c;margin-right: 0px;">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean"
+        style="background: rgba(20,20,21,0.68);margin: 0px;width: 100%;height: 9vh;">
+        <div class="container"><a class="navbar-brand d-lg-flex justify-content-lg-start" href="#"
+                style="background: rgba(255,255,255,0);color: var(--bs-white);font-weight: bold;font-family: ABeeZee, sans-serif;">Hexapods</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" id="home" href="http://127.0.0.1/"
+                            style="color: var(--bs-white);font-family: ABeeZee, sans-serif;font-weight: bold;">Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link disabled" href="#"
+                            style="color: var(--bs-white);font-family: ABeeZee, sans-serif;font-weight: bold;">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="margin-top: 15px;margin-bottom: 15px;">
+            <div class="col-md-6"
+                style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);width: 78%;">
+                <h1 class="text-start"
+                    style="width: 100%;min-height: 75px;margin: 1.8%;color: rgb(169,169,169);font-size: 24px;background: #1A1A1C;border-radius: 50px;margin-left: 3%;">
+                    Name&nbsp; &nbsp; &nbsp; &nbsp;: {{name} <br>Affiliation :{{affiliation}} </h1>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+            <div class="col-md-6" style="width: 20%;"><button class="btn btn-lg" type="submit" style="height:100%;width:100%;border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);
+                 margin-left:20px;">
+                    <img style="height:50px;width:50px;" src="/assets/img/arrow-down.png">
+                </button></div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-between" style="margin-top: 40px;">
+            <div class="col-md-6"
+                style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);font-size: 25px;width: 48%;min-height: 350px;">
+                <h1 class="text-center"
+                    style="font-size: 32px;font-family: ABeeZee, sans-serif;margin-right: 0px;margin-top: 10px;color: #2b46a4;">
+                    Education</h1>
+                <ul>
+                    {% for edu in authedu %}
+                  <li>
+                     <!--education-->
+                     {{edu}}
+                  </li>
+                  {% endfor %}     
+                </ul>
+            </div>
+            <div class="col-md-6"
+                style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);font-size: 25px;width: 48%;min-height: 350px;">
+                <h1 class="text-center"
+                    style="font-size: 32px;font-family: ABeeZee, sans-serif;margin-top: 10px;margin-right: 0px;color: #2b46a4;">
+                    Prior Affiliation</h1>
+                <ul>
+                    {% for paff in pa %}
+                  <li>
+                     <!--projects-->
+                     {{paff}}
+                  </li>
+                  {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row justify-content-between" style="margin-top: 40px;">
+            <div class="col-md-6"
+                style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);font-size: 25px;width: 48%;min-height: 350px;">
+                <h1 class="text-center"
+                    style="font-size: 32px;font-family: ABeeZee, sans-serif;margin-right: 0px;margin-top: 10px;color: #2b46a4;">
+                    Research Interests</h1>
+                <ul>
+                    <li style="font-size: 20px;">
+                        {{ri}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6"
+                style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);font-size: 25px;width: 48%;min-height: 350px;">
+                <h1 class="text-center"
+                    style="font-size: 32px;font-family: ABeeZee, sans-serif;margin-top: 10px;margin-right: 0px;color: #2b46a4;">
+                    Projects</h1>
+                <ul>
+                    {% for projects in authprojects %}
+                    <li>
+                       <!--projects-->
+                       {{projects}}
+                    </li>
+                    {% endfor %}    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col"
+        style="border-radius: 50px;background: #1A1A1C;box-shadow: 5px 5px 5px #131314, -5px -5px 5px #212124;color: rgb(169,169,169);font-size: 25px;margin-left: 26%;margin-right: 26%;margin-top: 40px;margin-bottom: 40px;padding-bottom: 10px;padding-top: 1px;min-height: 350px;padding-left: 10px;width: 48%;">
+        <h1 class="text-center"
+            style="font-size: 32px;font-family: ABeeZee, sans-serif;margin-top: 20px;margin-right: 0px;color: #2b46a4;">
+            Publications</h1>
+        <ul>
+            {%for pub in authpub%}
+               <li><a href="#">{{pub}}</a></li>
+
+            {% endfor %}
+        </ul>
+    </div>
+    <footer
+        class="d-flex d-sm-flex d-md-flex d-lg-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center"
+        style="background: rgba(20,20,21,0.68);height: 9vh;">
+        <h1 style="color: rgb(50,50,50);font-family: ABeeZee, sans-serif;text-align: center;font-size: 18px;">
+            Researchers Discovery Platform&nbsp;</h1>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function download() {
+           $.ajax({
+              url: '/profile', // the endpoint
+              type: 'POST', // http method
+              data: {
+                 'csrfmiddlewaretoken': '{{ csrf_token }}'
+              },
+              // data sent with the post request
+              // handle a successful response
+              //success : function(data) {
+              //},
+           });
+        }
+     </script>
+</body>
+
+</html>
